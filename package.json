@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Todo app using Angular2 and Redux",
   "scripts": {
-    "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src"
+    "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
+    "postinstall": "typings install"
   },
   "repository": {
     "type": "git",
@@ -24,15 +25,17 @@
   "devDependencies": {
     "ts-loader": "^0.8.1",
     "typescript": "^1.7.3",
+    "typings": "^0.6.8",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.6",
     "es6-promise": "3.1.2",
-    "es6-shim": "0.34.4",
-    "reflect-metadata": "0.1.3",
-    "rxjs": "5.0.0-beta.1",
+    "es6-shim": "^0.34.4",
+    "redux": "^3.3.1",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "^5.0.0-beta.1",
     "zone.js": "0.5.14"
   }
 }

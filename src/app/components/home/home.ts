@@ -1,4 +1,5 @@
-import {Component} from 'angular2/core';
+import { Component } from 'angular2/core';
+import { Store } from '../../store';
 
 @Component({
   selector: 'home',
@@ -9,4 +10,9 @@ import {Component} from 'angular2/core';
   pipes: []
 })
 export class Home {
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    console.log('hello', this.store.getState());
+  }
 }
