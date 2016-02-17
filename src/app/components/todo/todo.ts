@@ -6,6 +6,6 @@ import { Component, Input } from 'angular2/core';
     <p>{{text}}</p>
   `
 })
-export class TodoComponent {
+export class Todo {
   @Input() text: string;
 }

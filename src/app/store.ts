@@ -15,4 +15,8 @@ export class Store {
   getState() {
     return this._store.getState();
   }
+
+  subscribe(fn) {
+    return this._store.subscribe(fn);
+  }
 }
