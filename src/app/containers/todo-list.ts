@@ -5,7 +5,7 @@ import { TodoList } from '../components/todo-list/todo-list';
 @Component({
   selector: 'todo-list-container',
   template: `
-    <todo-list [todos]="todos"></todo-list>
+    <todo-list [todos]="todos" (todoClick)="onTodoClick($event)"></todo-list>
   `,
   directives: [TodoList]
 })
@@ -19,6 +19,13 @@ export class TodoListContainer {
     return {
       todos: state.todos
     };
+  }
+
+  onTodoClick({ id }) {
+    this.store.dispatch({
+      type: 'TOGGLE_TODO',
+      id
+    });
   }
 
   ngOnInit() {
