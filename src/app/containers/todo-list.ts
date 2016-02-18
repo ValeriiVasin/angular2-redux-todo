@@ -2,16 +2,6 @@ import { Component } from 'angular2/core';
 import { Store } from '../store';
 import { TodoList } from '../components/todo-list/todo-list';
 
-const assign = (target, ...sources) => {
-  for (let source of sources) {
-    for (let prop of Object.keys(source)) {
-      target[prop] = source[prop];
-    }
-  }
-
-  return target;
-}
-
 @Component({
   selector: 'todo-list-container',
   template: `
@@ -32,7 +22,7 @@ export class TodoListContainer {
   }
 
   ngOnInit() {
-    assign(this, this.mapStateToProps(this.store.getState()));
+    Object.assign(this, this.mapStateToProps(this.store.getState()));
 
     this.unsubscribe = this.store.subscribe(() => {
       this.todos = this.store.getState().todos;
