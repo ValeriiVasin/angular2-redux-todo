@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
-import { TodoListContainer } from '../todo-list/todo-list.container';
-import { AddTodoContainer } from '../add-todo/add-todo.container';
+import { TodoListContainer } from '../../containers/todo-list';
+import { AddTodoContainer } from '../../containers/add-todo';
 
 @Component({
   selector: 'home',

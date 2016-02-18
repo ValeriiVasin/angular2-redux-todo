@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
-import { Store } from '../../store';
-import { AddTodo } from './add-todo';
+import { Store } from '../store';
+import { AddTodo } from '../components/add-todo/add-todo';
 
 const assign = (target, ...sources) => {
   for (let source of sources) {
