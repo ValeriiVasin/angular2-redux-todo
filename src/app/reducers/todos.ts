@@ -6,7 +6,7 @@ const initialTodos = [
 
 export const todos = (todos = initialTodos, action) => {
   if (action.type === 'CREATE_TODO') {
-      return [...todos, { text: 'Hello there' }];
+      return [...todos, { text: action.value }];
   }
 
   return todos;
