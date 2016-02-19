@@ -2,10 +2,42 @@ import { Component } from 'angular2/core';
 import { Store } from '../store';
 import { TodoList } from '../components/todo-list/todo-list';
 
+import { FILTERS } from '../reducers/visibilityFilter';
+
+const filteredTodos = (todos, filter) => {
+  return todos.filter(todo => {
+    if (filter === FILTERS.ALL) {
+      return true;
+    }
+
+    if (filter === FILTERS.DONE) {
+      return todo.isDone;
+    }
+
+    if (filter === FILTERS.TODO) {
+      return !todo.isDone;
+    }
+  });
+};
+
+const mapStateToProps = (state) => {
+  return {
+    todos: filteredTodos(state.todos, state.visibilityFilter)
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    todoClick({ id }) {
+      dispatch({ type: 'TOGGLE_TODO', id });
+    }
+  };
+};
+
 @Component({
   selector: 'todo-list-container',
   template: `
-    <todo-list [todos]="todos" (todoClick)="onTodoClick($event)"></todo-list>
+    <todo-list [todos]="todos" (todoClick)="todoClick($event)"></todo-list>
   `,
   directives: [TodoList]
 })
@@ -15,24 +47,12 @@ export class TodoListContainer {
 
   constructor(private store: Store) {}
 
-  mapStateToProps(state) {
-    return {
-      todos: state.todos
-    };
-  }
-
-  onTodoClick({ id }) {
-    this.store.dispatch({
-      type: 'TOGGLE_TODO',
-      id
-    });
-  }
-
   ngOnInit() {
-    Object.assign(this, this.mapStateToProps(this.store.getState()));
+    Object.assign(this, mapStateToProps(this.store.getState()));
+    Object.assign(this, mapDispatchToProps(this.store.dispatch.bind(this.store)));
 
     this.unsubscribe = this.store.subscribe(() => {
-      this.todos = this.store.getState().todos;
+      Object.assign(this, mapStateToProps(this.store.getState()));
     });
   }
 

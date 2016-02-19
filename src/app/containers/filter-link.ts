@@ -30,6 +30,7 @@ const mapStateToProps = (state, props) => {
 })
 export class FilterLink {
   @Input() filter;
+  private unsubscribe: Function;
 
   constructor(private store: Store) {}
 
@@ -47,8 +48,12 @@ export class FilterLink {
 
     Object.assign(this, mapStateToProps(this.store.getState(), this.getProps()));
 
-    this.store.subscribe(() => {
+    this.unsubscribe = this.store.subscribe(() => {
       Object.assign(this, mapStateToProps(this.store.getState(), this.getProps()));
     });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 }
