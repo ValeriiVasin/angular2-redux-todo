@@ -1,18 +1,20 @@
 import { Component, provide } from 'angular2/core';
 import { Router, Route, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
-import { Home } from './components/home/home';
+import { TodoApp } from './components/todo-app/todo-app';
 import { Store } from './store';
 
 @Component({
   selector: 'app',
-  templateUrl: 'app/app.html',
+  template: `
+    <router-outlet></router-outlet>
+  `,
   directives: [ROUTER_DIRECTIVES],
   pipes: [],
   providers: [Store]
 })
 @RouteConfig([
-  new Route({ path: '/home', component: Home, name: 'Home', useAsDefault: true})
+  new Route({ path: '/', component: TodoApp, name: 'TodoApp', useAsDefault: true })
 ])
 export class App {
 }
