@@ -27,6 +27,10 @@ export const todos = (todos = initialTodos, action) => {
     });
   }
 
+  if (action.type === 'CLEAR_COMPLETED_TODOS') {
+    return todos.filter((todo) => !todo.isDone);
+  }
+
   if (action.type === 'DESTROY_TODO') {
     return todos.filter((todo) => todo.id !== action.id);
   }

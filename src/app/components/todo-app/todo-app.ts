@@ -3,6 +3,7 @@ import { TodoListContainer } from '../../containers/todo-list';
 import { AddTodoContainer } from '../../containers/add-todo';
 import { TodosCounterContainer } from '../../containers/todos-counter';
 import { TodosFilters } from '../todos-filters/todos-filters';
+import { ClearCompleted } from '../../containers/clear-completed';
 
 @Component({
   selector: 'home',
@@ -20,6 +21,7 @@ import { TodosFilters } from '../todos-filters/todos-filters';
         <footer id="footer">
           <todos-counter-container></todos-counter-container>
           <todos-filters></todos-filters>
+          <clear-completed></clear-completed>
         </footer>
       </div>
     </section>
@@ -28,7 +30,8 @@ import { TodosFilters } from '../todos-filters/todos-filters';
     TodoListContainer,
     AddTodoContainer,
     TodosCounterContainer,
-    TodosFilters
+    TodosFilters,
+    ClearCompleted
   ]
 })
 export class TodoApp {}
