@@ -4,6 +4,10 @@ const initialTodos = [
   { text: 'three', id: 3, isDone: false }
 ];
 
+export const getRemainingTodosCount = (todos) => {
+  return todos.filter(todo => !todo.isDone).length;
+};
+
 export const todos = (todos = initialTodos, action) => {
   if (action.type === 'CREATE_TODO') {
       return [...todos, {

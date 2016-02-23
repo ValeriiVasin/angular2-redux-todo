@@ -1,6 +1,7 @@
 import { Component } from 'angular2/core';
 import { TodoListContainer } from '../../containers/todo-list';
 import { AddTodoContainer } from '../../containers/add-todo';
+import { TodosCounterContainer } from '../../containers/todos-counter';
 
 import { FilterLink } from '../../containers/filter-link';
 import { FILTERS } from '../../reducers/visibilityFilter';
@@ -19,11 +20,7 @@ import { FILTERS } from '../../reducers/visibilityFilter';
           <todo-list-container></todo-list-container>
         </section>
         <footer id="footer">
-          <span id="todo-count">
-            <strong>4</strong>
-            <span>items</span>
-            <span> left</span>
-          </span>
+          <todos-counter-container></todos-counter-container>
 
           <ul id="filters">
             <li>
@@ -42,7 +39,7 @@ import { FILTERS } from '../../reducers/visibilityFilter';
       </div>
     </section>
   `,
-  directives: [TodoListContainer, AddTodoContainer, FilterLink]
+  directives: [TodoListContainer, AddTodoContainer, TodosCounterContainer, FilterLink]
 })
 export class TodoApp {
   public FILTERS = FILTERS;
