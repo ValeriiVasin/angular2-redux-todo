@@ -1,8 +1,8 @@
 // TODO: Move to constants
 export const FILTERS = {
-  ALL: { text: 'ALL' },
-  DONE: { text: 'DONE' },
-  TODO: { text: 'TODO' }
+  ALL: { text: 'All' },
+  DONE: { text: 'Completed' },
+  TODO: { text: 'Active' }
 };
 
 export const visibilityFilter = (filter = FILTERS.ALL, action) => {

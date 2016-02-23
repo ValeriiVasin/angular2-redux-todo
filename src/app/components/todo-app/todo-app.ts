@@ -27,15 +27,15 @@ import { FILTERS } from '../../reducers/visibilityFilter';
 
           <ul id="filters">
             <li>
-              <a href="#/" class="selected">All</a>
+              <filter-link [filter]="FILTERS.ALL"></filter-link>
             </li>
             <span> </span>
             <li>
-              <a href="#/active" class="">Active</a>
+              <filter-link [filter]="FILTERS.TODO"></filter-link>
             </li>
             <span> </span>
             <li>
-              <a href="#/completed" class="">Completed</a>
+              <filter-link [filter]="FILTERS.DONE"></filter-link>
             </li>
           </ul>
         </footer>
