@@ -1,6 +1,7 @@
 import { Component } from 'angular2/core';
 import { Store } from '../store';
 import { AddTodo } from '../components/add-todo/add-todo';
+import { connect } from '../lib';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -21,6 +22,6 @@ export class AddTodoContainer {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    Object.assign(this, mapDispatchToProps(this.store.dispatch.bind(this.store)));
+    connect({ mapDispatchToProps, component: this, store: this.store });
   }
 }

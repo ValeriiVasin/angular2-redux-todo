@@ -1,6 +1,7 @@
 import { Component, Input } from 'angular2/core';
 import { Store } from '../store';
 import { Link } from '../components/link/link';
+import { connect } from '../lib';
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
@@ -30,30 +31,10 @@ const mapStateToProps = (state, props) => {
 })
 export class FilterLink {
   @Input() filter;
-  private unsubscribe: Function;
 
   constructor(private store: Store) {}
 
-  getProps() {
-    return {
-      filter: this.filter
-    };
-  }
-
   ngOnInit() {
-    Object.assign(
-      this,
-      mapDispatchToProps(this.store.dispatch.bind(this.store), this.getProps())
-    );
-
-    Object.assign(this, mapStateToProps(this.store.getState(), this.getProps()));
-
-    this.unsubscribe = this.store.subscribe(() => {
-      Object.assign(this, mapStateToProps(this.store.getState(), this.getProps()));
-    });
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe();
+    connect({ component: this, store: this.store, mapStateToProps, mapDispatchToProps });
   }
 }

@@ -1,8 +1,8 @@
 import { Component } from 'angular2/core';
 import { Store } from '../store';
 import { TodoList } from '../components/todo-list/todo-list';
-
 import { FILTERS } from '../reducers/visibilityFilter';
+import { connect } from '../lib';
 
 const filteredTodos = (todos, filter) => {
   return todos.filter(todo => {
@@ -50,21 +50,9 @@ const mapDispatchToProps = (dispatch) => {
   directives: [TodoList]
 })
 export class TodoListContainer {
-  public todos: Object[];
-  private unsubscribe: Function;
-
   constructor(private store: Store) {}
 
   ngOnInit() {
-    Object.assign(this, mapStateToProps(this.store.getState()));
-    Object.assign(this, mapDispatchToProps(this.store.dispatch.bind(this.store)));
-
-    this.unsubscribe = this.store.subscribe(() => {
-      Object.assign(this, mapStateToProps(this.store.getState()));
-    });
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe();
+    connect({ component: this, store: this.store, mapStateToProps, mapDispatchToProps });
   }
 }
