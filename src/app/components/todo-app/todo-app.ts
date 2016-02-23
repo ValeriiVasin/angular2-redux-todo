@@ -2,9 +2,7 @@ import { Component } from 'angular2/core';
 import { TodoListContainer } from '../../containers/todo-list';
 import { AddTodoContainer } from '../../containers/add-todo';
 import { TodosCounterContainer } from '../../containers/todos-counter';
-
-import { FilterLink } from '../../containers/filter-link';
-import { FILTERS } from '../../reducers/visibilityFilter';
+import { TodosFilters } from '../todos-filters/todos-filters';
 
 @Component({
   selector: 'home',
@@ -21,26 +19,16 @@ import { FILTERS } from '../../reducers/visibilityFilter';
         </section>
         <footer id="footer">
           <todos-counter-container></todos-counter-container>
-
-          <ul id="filters">
-            <li>
-              <filter-link [filter]="FILTERS.ALL"></filter-link>
-            </li>
-            <span> </span>
-            <li>
-              <filter-link [filter]="FILTERS.TODO"></filter-link>
-            </li>
-            <span> </span>
-            <li>
-              <filter-link [filter]="FILTERS.DONE"></filter-link>
-            </li>
-          </ul>
+          <todos-filters></todos-filters>
         </footer>
       </div>
     </section>
   `,
-  directives: [TodoListContainer, AddTodoContainer, TodosCounterContainer, FilterLink]
+  directives: [
+    TodoListContainer,
+    AddTodoContainer,
+    TodosCounterContainer,
+    TodosFilters
+  ]
 })
-export class TodoApp {
-  public FILTERS = FILTERS;
-}
+export class TodoApp {}
