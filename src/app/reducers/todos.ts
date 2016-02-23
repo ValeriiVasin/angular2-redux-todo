@@ -23,5 +23,9 @@ export const todos = (todos = initialTodos, action) => {
     });
   }
 
+  if (action.type === 'DESTROY_TODO') {
+    return todos.filter((todo) => todo.id !== action.id);
+  }
+
   return todos;
 };

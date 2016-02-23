@@ -4,20 +4,28 @@ import { Todo } from '../todo/todo';
 @Component({
   selector: 'todo-list',
   template: `
-    <todo-item
-      *ngFor="#todo of todos"
-      [text]="todo.text"
-      [isDone]="todo.isDone"
-      (click)="handleTodoClick(todo)"
-      ></todo-item>
+    <ul id="todo-list">
+      <todo-item
+        *ngFor="#todo of todos"
+        [text]="todo.text"
+        [isDone]="todo.isDone"
+        (toggle)="onToggleTodo(todo)"
+        (destroy)="onDestroyTodo(todo)"
+        ></todo-item>
+    <ul>
   `,
   directives: [Todo]
 })
 export class TodoList {
   @Input() todos: Object[];
-  @Output() todoClick = new EventEmitter();
+  @Output() toggleTodo = new EventEmitter();
+  @Output() destroyTodo = new EventEmitter();
 
-  handleTodoClick({ id }) {
-    this.todoClick.emit({ id });
+  onToggleTodo({ id }) {
+    this.toggleTodo.emit({ id });
+  }
+
+  onDestroyTodo({ id }) {
+    this.destroyTodo.emit({ id });
   }
 }

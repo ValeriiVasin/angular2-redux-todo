@@ -28,8 +28,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    todoClick({ id }) {
+    onToggleTodo({ id }) {
       dispatch({ type: 'TOGGLE_TODO', id });
+    },
+
+    onDestroyTodo({ id }) {
+      dispatch({ type: 'DESTROY_TODO', id });
     }
   };
 };
@@ -37,7 +41,11 @@ const mapDispatchToProps = (dispatch) => {
 @Component({
   selector: 'todo-list-container',
   template: `
-    <todo-list [todos]="todos" (todoClick)="todoClick($event)"></todo-list>
+    <todo-list
+      [todos]="todos"
+      (toggleTodo)="onToggleTodo($event)"
+      (destroyTodo)="onDestroyTodo($event)"
+      ></todo-list>
   `,
   directives: [TodoList]
 })
