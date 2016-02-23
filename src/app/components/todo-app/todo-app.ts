@@ -12,7 +12,7 @@ import { FILTERS } from '../../reducers/visibilityFilter';
       <div>
         <header class="header">
           <h1>todos</h1>
-          <input id="new-todo" placeholder="What needs to be done?" value="">
+          <add-todo-container></add-todo-container>
         </header>
         <section id="main">
           <input id="toggle-all" type="checkbox">
