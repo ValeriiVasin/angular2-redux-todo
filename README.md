@@ -1,6 +1,6 @@
 ## angular2-redux-todo
 
-Todo app using Angular2 and Redux
+TodoMVC app using Angular2 and Redux
 
 ### Usage
 - Clone or fork this repository
