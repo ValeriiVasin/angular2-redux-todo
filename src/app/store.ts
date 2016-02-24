@@ -6,7 +6,7 @@ import { appReducer } from './reducers/app';
 
 @Injectable()
 export class Store {
-  private _store = createStore(appReducer);
+  private _store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(appReducer);
 
   dispatch(action) {
     this._store.dispatch(action);

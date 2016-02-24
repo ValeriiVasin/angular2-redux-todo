@@ -22,3 +22,7 @@ interface ObjectConstructor {
       */
     setPrototypeOf(o: any, proto: any): any;
 }
+
+interface Window {
+    devToolsExtension(): any;
+}
