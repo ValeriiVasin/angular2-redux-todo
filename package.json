@@ -4,7 +4,8 @@
   "description": "Todo app using Angular2 and Redux",
   "scripts": {
     "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
