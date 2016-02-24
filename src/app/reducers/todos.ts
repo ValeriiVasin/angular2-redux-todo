@@ -35,5 +35,10 @@ export const todos = (todos = initialTodos, action) => {
     return todos.filter((todo) => todo.id !== action.id);
   }
 
+  if (action.type === 'TOGGLE_ALL_TODOS') {
+    const isDone = getRemainingTodosCount(todos) !== 0;
+    return todos.map(todo => Object.assign({}, todo, { isDone }));
+  }
+
   return todos;
 };

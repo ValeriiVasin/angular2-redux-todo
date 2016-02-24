@@ -4,6 +4,7 @@ import { AddTodoContainer } from '../../containers/add-todo';
 import { TodosCounterContainer } from '../../containers/todos-counter';
 import { TodosFilters } from '../todos-filters/todos-filters';
 import { ClearCompleted } from '../../containers/clear-completed';
+import { ToggleAll } from '../../containers/toggle-all';
 
 @Component({
   selector: 'home',
@@ -15,7 +16,7 @@ import { ClearCompleted } from '../../containers/clear-completed';
           <add-todo-container></add-todo-container>
         </header>
         <section id="main">
-          <input id="toggle-all" type="checkbox">
+          <toggle-all></toggle-all>
           <todo-list-container></todo-list-container>
         </section>
         <footer id="footer">
@@ -28,6 +29,7 @@ import { ClearCompleted } from '../../containers/clear-completed';
   `,
   directives: [
     TodoListContainer,
+    ToggleAll,
     AddTodoContainer,
     TodosCounterContainer,
     TodosFilters,
