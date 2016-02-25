@@ -18,8 +18,9 @@ import { Focus } from '../../directives/focus';
         class="edit"
         value="{{text}}"
         [focus]="isEditing"
-        (keyup.enter)="onSave(editable.value)"
-        (keyup.escape)="onCancelEdit()"
+        (keyup.enter)="onKeyboardSave(editable.value)"
+        (keyup.escape)="onCancelEdit(); editable.value = text;"
+        (blur)="onBlurSave(editable.value)"
         />
     </li>
   `,
@@ -36,6 +37,8 @@ export class Todo {
   @Output() edit = new EventEmitter();
   @Output() cancelEdit = new EventEmitter();
 
+  private _preventSaveOnBlur = false;
+
   // TODO: Remove `null` when typescript interface will be fixed
 
   onToggle() {
@@ -46,8 +49,16 @@ export class Todo {
     this.edit.emit(null);
   }
 
-  onSave(value) {
+  onKeyboardSave(value) {
     this.save.emit({ value });
+    this._preventSaveOnBlur = true;
+    setTimeout(() => this._preventSaveOnBlur = false, 0);
+  }
+
+  onBlurSave(value) {
+    if (!this._preventSaveOnBlur) {
+      this.save.emit({ value });
+    }
   }
 
   onDestroy() {
