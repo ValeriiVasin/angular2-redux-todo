@@ -8,6 +8,20 @@ export const getRemainingTodosCount = (todos) => {
   return todos.filter(todo => !todo.isDone).length;
 };
 
+const updateTodo = (todos, id, changes) => {
+  return todos.map((todo) => {
+    if (todo.id !== id) {
+      return todo;
+    }
+
+    if (typeof changes === 'function') {
+      return Object.assign({}, todo, changes(todo));
+    }
+
+    return Object.assign({}, todo, changes);
+  });
+};
+
 export const todos = (todos = initialTodos, action) => {
   if (action.type === 'CREATE_TODO') {
       return [...todos, {
@@ -18,13 +32,7 @@ export const todos = (todos = initialTodos, action) => {
   }
 
   if (action.type === 'TOGGLE_TODO') {
-    return todos.map((todo) => {
-      if (todo.id !== action.id) {
-        return todo;
-      }
-
-      return Object.assign({}, todo, { isDone: !todo.isDone })
-    });
+    return updateTodo(todos, action.id, (todo) => ({ isDone: !todo.isDone }));
   }
 
   if (action.type === 'CLEAR_COMPLETED_TODOS') {
@@ -38,6 +46,10 @@ export const todos = (todos = initialTodos, action) => {
   if (action.type === 'TOGGLE_ALL_TODOS') {
     const isDone = getRemainingTodosCount(todos) !== 0;
     return todos.map(todo => Object.assign({}, todo, { isDone }));
+  }
+
+  if (action.type === 'SAVE_TODO') {
+    return updateTodo(todos, action.id, { text: action.value });
   }
 
   return todos;

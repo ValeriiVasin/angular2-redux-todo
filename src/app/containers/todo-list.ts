@@ -26,26 +26,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onToggleTodo({ id }) {
-      dispatch({ type: 'TOGGLE_TODO', id });
-    },
-
-    onDestroyTodo({ id }) {
-      dispatch({ type: 'DESTROY_TODO', id });
-    }
-  };
-};
-
 @Component({
   selector: 'todo-list-container',
   template: `
-    <todo-list
-      [todos]="todos"
-      (toggleTodo)="onToggleTodo($event)"
-      (destroyTodo)="onDestroyTodo($event)"
-      ></todo-list>
+    <todo-list [todos]="todos"></todo-list>
   `,
   directives: [TodoList]
 })
@@ -53,6 +37,6 @@ export class TodoListContainer {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    connect({ component: this, store: this.store, mapStateToProps, mapDispatchToProps });
+    connect({ component: this, store: this.store, mapStateToProps });
   }
 }
