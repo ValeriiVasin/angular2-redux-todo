@@ -3,12 +3,12 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    'app': './src/bootstrap.ts',
-    'vendor': './src/vendor.ts'
+    'app': path.resolve(__dirname, './src/bootstrap.ts'),
+    'vendor': path.resolve(__dirname, './src/vendor.ts')
   },
   output: {
-    path: "./dist",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, './dist'),
+    filename: 'bundle.js'
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
