@@ -25,6 +25,8 @@
   "homepage": "https://github.com/valeriivasin/angular2-redux-todo",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-preprocess": "^2.0.0",
     "gulp-util": "^3.0.7",
     "ts-loader": "^0.8.1",
     "typescript": "^1.7.3",
