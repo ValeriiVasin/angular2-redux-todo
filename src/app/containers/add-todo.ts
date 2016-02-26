@@ -2,13 +2,12 @@ import { Component } from 'angular2/core';
 import { Store } from '../store';
 import { AddTodo } from '../components/add-todo';
 import { connect } from '../lib';
+import { createTodo } from '../actions';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    add({ value }) {
-      dispatch({ type: 'CREATE_TODO', value });
-    }
-  }
+    add: ({ value }) => dispatch(createTodo({ value }))
+  };
 };
 
 @Component({

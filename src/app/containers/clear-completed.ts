@@ -1,18 +1,17 @@
 import { Component } from 'angular2/core';
 import { Store } from '../store';
 import { connect } from '../lib';
+import { clearCompletedTodos } from '../actions';
 
 const getCompletedTodosCount = (todos) => {
   return todos.reduce((total, todo) => {
     return todo.isDone ? total + 1 : total;
-  }, 0)
+  }, 0);
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onButtonClicked() {
-      dispatch({ type: 'CLEAR_COMPLETED_TODOS' });
-    }
+    onButtonClicked: () => dispatch(clearCompletedTodos())
   }
 };
 

@@ -2,6 +2,13 @@ import { Component, Input, Output, EventEmitter } from 'angular2/core';
 import { Todo } from '../components/todo';
 import { Store } from '../store';
 import { connect } from '../lib';
+import {
+  toggleTodo,
+  destroyTodo,
+  editTodo,
+  saveTodo,
+  cancelTodoEdit
+} from '../actions';
 
 const mapStateToProps = (state, props) => {
   return {
@@ -13,21 +20,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    onToggle() {
-      dispatch({ type: 'TOGGLE_TODO', id: props.todo.id });
-    },
-    onDestroy() {
-      dispatch({ type: 'DESTROY_TODO', id: props.todo.id });
-    },
-    onEdit() {
-      dispatch({ type: 'EDIT_TODO', id: props.todo.id });
-    },
-    onSave({ value }) {
-      dispatch({ type: 'SAVE_TODO', id: props.todo.id, value });
-    },
-    onCancelEdit() {
-      dispatch({ type: 'CANCEL_EDIT_TODO' });
-    }
+    onToggle: () => dispatch(toggleTodo({ id: props.todo.id })),
+    onDestroy: () => dispatch(destroyTodo({ id: props.todo.id })),
+    onEdit: () => dispatch(editTodo({ id: props.todo.id })),
+    onSave: ({ value }) => dispatch(saveTodo({ id: props.todo.id, value })),
+    onCancelEdit: () => dispatch(cancelTodoEdit({ id: props.todo.id }))
   };
 };
 

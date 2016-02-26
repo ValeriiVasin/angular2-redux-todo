@@ -1,6 +1,7 @@
 import { Component, Input } from 'angular2/core';
 import { connect } from '../lib';
 import { Store } from '../store';
+import { toggleAllTodos } from '../actions';
 
 const mapStateToProps = (state) => {
   const isActive = state.todos.filter(todo => !todo.isDone).length === 0;
@@ -12,9 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onToggleAll() {
-      dispatch({ type: 'TOGGLE_ALL_TODOS' });
-    }
+    onToggleAll: () => dispatch(toggleAllTodos())
   };
 };
 
@@ -25,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
       id="toggle-all"
       type="checkbox"
       [checked]="isActive"
-      (change)="onToggleAll($event)"
+      (change)="onToggleAll()"
       />
   `
 })

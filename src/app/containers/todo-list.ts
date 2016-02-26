@@ -4,7 +4,7 @@ import { TodoList } from '../components/todo-list';
 import { FILTERS } from '../reducers/visibilityFilter';
 import { connect } from '../lib';
 
-const filteredTodos = (todos, filter) => {
+const visibleTodos = (todos, filter) => {
   return todos.filter(todo => {
     if (filter === FILTERS.ALL) {
       return true;
@@ -22,7 +22,7 @@ const filteredTodos = (todos, filter) => {
 
 const mapStateToProps = (state) => {
   return {
-    todos: filteredTodos(state.todos, state.visibilityFilter)
+    todos: visibleTodos(state.todos, state.visibilityFilter)
   };
 };
 
