@@ -3,7 +3,7 @@ import { todos } from './todos';
 import { visibilityFilter } from './visibilityFilter';
 import { ui } from './ui';
 
-export const appReducer = combineReducers({
+export const rootReducer = combineReducers({
   todos,
   visibilityFilter,
   ui
