@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { Store } from '../store';
-import { AddTodo } from '../components/add-todo/add-todo';
+import { AddTodo } from '../components/add-todo';
 import { connect } from '../lib';
 
 const mapDispatchToProps = (dispatch) => {

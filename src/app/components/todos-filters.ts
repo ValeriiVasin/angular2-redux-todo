@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 
-import { FilterLink } from '../../containers/filter-link';
-import { FILTERS } from '../../reducers/visibilityFilter';
+import { FilterLink } from '../containers/filter-link';
+import { FILTERS } from '../reducers/visibilityFilter';
 
 @Component({
   selector: 'todos-filters',

@@ -1,6 +1,6 @@
 import { Component, Input } from 'angular2/core';
 import { Store } from '../store';
-import { Link } from '../components/link/link';
+import { Link } from '../components/link';
 import { connect } from '../lib';
 
 const mapDispatchToProps = (dispatch, props) => {

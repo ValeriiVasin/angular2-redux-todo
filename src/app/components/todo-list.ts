@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { TodoContainer } from '../../containers/todo';
+import { TodoContainer } from '../containers/todo';
 
 @Component({
   selector: 'todo-list',

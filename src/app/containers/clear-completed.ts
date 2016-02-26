@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
       >Clear completed</button>
   `
 })
-export class ClearCompleted {
+export class ClearCompletedContainer {
   constructor(private store: Store) {}
 
   ngOnInit() {

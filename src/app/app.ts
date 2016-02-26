@@ -1,7 +1,7 @@
 import { Component, provide } from 'angular2/core';
 import { Router, Route, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
-import { TodoApp } from './components/todo-app/todo-app';
+import { TodoApp } from './components/todo-app';
 import { Store } from './store';
 
 @Component({

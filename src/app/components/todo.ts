@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { Focus } from '../../directives/focus';
+import { Focus } from '../directives/focus';
 
 @Component({
   selector: 'todo-item',

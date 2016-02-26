@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { Todo } from '../components/todo/todo';
+import { Todo } from '../components/todo';
 import { Store } from '../store';
 import { connect } from '../lib';
 

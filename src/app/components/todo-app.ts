@@ -1,10 +1,10 @@
 import { Component } from 'angular2/core';
-import { TodoListContainer } from '../../containers/todo-list';
-import { AddTodoContainer } from '../../containers/add-todo';
-import { TodosCounterContainer } from '../../containers/todos-counter';
-import { TodosFilters } from '../todos-filters/todos-filters';
-import { ClearCompleted } from '../../containers/clear-completed';
-import { ToggleAll } from '../../containers/toggle-all';
+import { TodosFilters } from './todos-filters';
+import { TodoListContainer } from '../containers/todo-list';
+import { AddTodoContainer } from '../containers/add-todo';
+import { TodosCounterContainer } from '../containers/todos-counter';
+import { ClearCompletedContainer } from '../containers/clear-completed';
+import { ToggleAllContainer } from '../containers/toggle-all';
 
 @Component({
   selector: 'home',
@@ -29,11 +29,11 @@ import { ToggleAll } from '../../containers/toggle-all';
   `,
   directives: [
     TodoListContainer,
-    ToggleAll,
+    ToggleAllContainer,
     AddTodoContainer,
     TodosCounterContainer,
     TodosFilters,
-    ClearCompleted
+    ClearCompletedContainer
   ]
 })
 export class TodoApp {}

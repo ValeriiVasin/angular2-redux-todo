@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
       />
   `
 })
-export class ToggleAll {
+export class ToggleAllContainer {
   @Input() isActive: boolean = false;
 
   constructor(private store: Store) {}
