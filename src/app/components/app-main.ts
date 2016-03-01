@@ -11,7 +11,8 @@ import { ToggleAllContainer } from '../containers/toggle-all';
     </section>
   `,
   directives: [
-    TodoListContainer
+    TodoListContainer,
+    ToggleAllContainer
   ]
 })
 export class AppMain {

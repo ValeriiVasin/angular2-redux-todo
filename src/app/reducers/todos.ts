@@ -1,9 +1,3 @@
-const initialTodos = [
-  { text: 'one', id: 1, isDone: false },
-  { text: 'two', id: 2, isDone: false },
-  { text: 'three', id: 3, isDone: false }
-];
-
 export const getRemainingTodosCount = (todos) => {
   return todos.filter(todo => !todo.isDone).length;
 };
@@ -22,7 +16,7 @@ const updateTodo = (todos, id, changes) => {
   });
 };
 
-export const todos = (todos = initialTodos, action) => {
+export const todos = (todos = [], action) => {
   if (action.type === 'CREATE_TODO') {
       return [...todos, {
         text: action.value,
