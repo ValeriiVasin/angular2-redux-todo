@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+'use strict';
+
+/**
+ * Script is removing `dist` folder from .gitignore
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const modifyGitignore = () => {
+  const filepath = path.resolve(__dirname, '../.gitignore');
+  const content = fs.readFileSync(filepath, { encoding: 'utf8' });
+  const modifiedContent = content.replace(/^\/?dist\/?\n/m, '');
+
+  if (content === modifiedContent) {
+    return;
+  }
+
+  fs.writeFileSync(filepath, modifiedContent);
+};
+
+modifyGitignore();

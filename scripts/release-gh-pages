@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Read more about releasing to gh-pages using git-subtree:
+# http://yeoman.io/learning/deployment.html
+# http://www.damian.oquanta.info/posts/one-line-deployment-of-your-site-to-gh-pages.html
+
+TEMP_BRANCH_NAME="gh-pages-release-temp"
+
+git checkout -b $TEMP_BRANCH_NAME
+$(dirname $0)/exclude-dist-from-gitignore
+npm run build
+git add -A
+git commit -m 'Release to github pages.'
+
+git branch -D gh-pages
+git subtree split --prefix dist -b gh-pages
+git push -f origin gh-pages:gh-pages
+
+git checkout master
+git branch -D gh-pages
+git branch -D $TEMP_BRANCH_NAME
