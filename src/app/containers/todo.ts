@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
 import { Todo } from '../components/todo';
-import { Store } from '../store';
 import { connect } from '../lib';
 import {
   toggleTodo,
@@ -47,9 +46,7 @@ const mapDispatchToProps = (dispatch, props) => {
 export class TodoContainer {
   @Input() todo;
 
-  constructor(private store: Store) {}
-
   ngOnInit() {
-    connect({ component: this, store: this.store, mapStateToProps, mapDispatchToProps });
+    connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

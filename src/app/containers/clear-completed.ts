@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { Store } from '../store';
 import { connect } from '../lib';
 import { clearCompletedTodos } from '../actions';
 
@@ -32,9 +31,7 @@ const mapStateToProps = (state) => {
   `
 })
 export class ClearCompletedContainer {
-  constructor(private store: Store) {}
-
   ngOnInit() {
-    connect({ mapDispatchToProps, mapStateToProps, component: this, store: this.store });
+    connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input } from 'angular2/core';
 import { connect } from '../lib';
-import { Store } from '../store';
 import { toggleAllTodos } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -31,9 +30,7 @@ const mapDispatchToProps = (dispatch) => {
 export class ToggleAllContainer {
   @Input() isActive: boolean = false;
 
-  constructor(private store: Store) {}
-
   ngOnInit() {
-    connect({ component: this, store: this.store, mapStateToProps, mapDispatchToProps });
+    connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

@@ -1,5 +1,4 @@
 import { Component, Input } from 'angular2/core';
-import { Store } from '../store';
 import { Link } from '../components/link';
 import { connect } from '../lib';
 import { setVisibilityFilter } from '../actions';
@@ -31,9 +30,7 @@ const mapStateToProps = (state, props) => {
 export class FilterLink {
   @Input() filter;
 
-  constructor(private store: Store) {}
-
   ngOnInit() {
-    connect({ component: this, store: this.store, mapStateToProps, mapDispatchToProps });
+    connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

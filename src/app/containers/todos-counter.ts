@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { Store } from '../store';
 import { AddTodo } from '../components/add-todo';
 
 import { getRemainingTodosCount } from '../reducers/todos';
@@ -21,9 +20,7 @@ const mapStateToProps = (state) => {
   directives: [AddTodo]
 })
 export class TodosCounterContainer {
-  constructor(private store: Store) {}
-
   ngOnInit() {
-    connect({ component: this, mapStateToProps, store: this.store });
+    connect(mapStateToProps)(this);
   }
 }

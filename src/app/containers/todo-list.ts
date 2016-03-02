@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { Store } from '../store';
 import { TodoList } from '../components/todo-list';
 import { FILTERS } from '../reducers/visibilityFilter';
 import { connect } from '../lib';
@@ -34,9 +33,7 @@ const mapStateToProps = (state) => {
   directives: [TodoList]
 })
 export class TodoListContainer {
-  constructor(private store: Store) {}
-
   ngOnInit() {
-    connect({ component: this, store: this.store, mapStateToProps });
+    connect(mapStateToProps)(this);
   }
 }
