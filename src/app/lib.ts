@@ -1,21 +1,17 @@
-import { createStore } from 'redux';
-import { rootReducer } from './reducers/root';
+// connector that gets store and return connect function
+export const connector = (store) => {
+  if (!store) {
+    throw new Error('Please provide `store` to connector.');
+  }
 
-const store = window.devToolsExtension ?
-  window.devToolsExtension()(createStore)(rootReducer) :
-  createStore(rootReducer);
-
-export const connect = (mapStateToProps = null, mapDispatchToProps = null) => {
-  return component => {
+  const _connect = ({ component, mapStateToProps, mapDispatchToProps }) => {
+    console.log('connect!', component);
     if (!component) {
       throw new Error('`component` property is mandatory.');
     }
 
-    if (!store) {
-      throw new Error('`store` property is mandatory');
-    }
-
     if (mapDispatchToProps) {
+      console.log('has dispatch', component);
       Object.assign(component, mapDispatchToProps(store.dispatch, component));
     }
 
@@ -28,9 +24,29 @@ export const connect = (mapStateToProps = null, mapDispatchToProps = null) => {
 
       const componentOnDestroy = component.ngOnDestroy;
       component.ngOnDestroy = function() {
+        console.log('destroy', component);
         unsubscribe();
         return componentOnDestroy.apply(component, arguments);
       };
     }
   };
+
+  return (mapStateToProps = null, mapDispatchToProps = null) => {
+    return component => {
+      console.log('component bootstrap', component);
+      const ngOnInit = component.ngOnInit;
+
+      // emulate ngOnInit
+      // TODO: check that it applies initial state
+      if (!ngOnInit) {
+        setTimeout(() => _connect({ component, mapStateToProps, mapDispatchToProps }), 0);
+        return;
+      }
+
+      component.ngOnInit = function() {
+        ngOnInit.apply(this, arguments);
+        _connect({ component, mapStateToProps, mapDispatchToProps });
+      };
+    };
+  }
 };

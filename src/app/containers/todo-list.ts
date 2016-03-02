@@ -1,7 +1,6 @@
-import { Component } from 'angular2/core';
+import { Component, Inject } from 'angular2/core';
 import { TodoList } from '../components/todo-list';
 import { FILTERS } from '../reducers/visibilityFilter';
-import { connect } from '../lib';
 
 const visibleTodos = (todos, filter) => {
   return todos.filter(todo => {
@@ -33,7 +32,7 @@ const mapStateToProps = (state) => {
   directives: [TodoList]
 })
 export class TodoListContainer {
-  ngOnInit() {
+  constructor(@Inject('connect') connect) {
     connect(mapStateToProps)(this);
   }
 }

@@ -1,6 +1,5 @@
-import { Component } from 'angular2/core';
+import { Component, Inject } from 'angular2/core';
 import { AddTodo } from '../components/add-todo';
-import { connect } from '../lib';
 import { createTodo } from '../actions';
 
 const mapDispatchToProps = (dispatch) => {
@@ -17,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   directives: [AddTodo]
 })
 export class AddTodoContainer {
-  ngOnInit() {
+  constructor(@Inject('connect') connect) {
     connect(null, mapDispatchToProps)(this);
   }
 }

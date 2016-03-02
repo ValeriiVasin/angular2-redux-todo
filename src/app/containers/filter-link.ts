@@ -1,6 +1,5 @@
-import { Component, Input } from 'angular2/core';
+import { Component, Input, Inject } from 'angular2/core';
 import { Link } from '../components/link';
-import { connect } from '../lib';
 import { setVisibilityFilter } from '../actions';
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -30,7 +29,7 @@ const mapStateToProps = (state, props) => {
 export class FilterLink {
   @Input() filter;
 
-  ngOnInit() {
+  constructor(@Inject('connect') connect) {
     connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

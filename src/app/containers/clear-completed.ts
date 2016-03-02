@@ -1,5 +1,4 @@
-import { Component } from 'angular2/core';
-import { connect } from '../lib';
+import { Component, Inject } from 'angular2/core';
 import { clearCompletedTodos } from '../actions';
 
 const getCompletedTodosCount = (todos) => {
@@ -31,7 +30,7 @@ const mapStateToProps = (state) => {
   `
 })
 export class ClearCompletedContainer {
-  ngOnInit() {
+  constructor(@Inject('connect') connect) {
     connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

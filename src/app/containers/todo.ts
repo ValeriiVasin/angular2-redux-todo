@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { Component, Input, Output, EventEmitter, Inject } from 'angular2/core';
 import { Todo } from '../components/todo';
-import { connect } from '../lib';
+
 import {
   toggleTodo,
   destroyTodo,
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch, props) => {
 export class TodoContainer {
   @Input() todo;
 
-  ngOnInit() {
+  constructor(@Inject('connect') connect) {
     connect(mapStateToProps, mapDispatchToProps)(this);
   }
 }

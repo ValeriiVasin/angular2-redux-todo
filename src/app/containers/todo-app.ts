@@ -1,5 +1,4 @@
-import { Component } from 'angular2/core';
-import { connect } from '../lib';
+import { Component, Inject } from 'angular2/core';
 import { AppHeader } from '../components/app-header';
 import { AppMain } from '../components/app-main';
 import { AppFooter } from '../components/app-footer';
@@ -26,7 +25,7 @@ const mapStateToProps = (state) => {
   ]
 })
 export class TodoApp {
-  ngOnInit() {
+  constructor(@Inject('connect') connect) {
     connect(mapStateToProps)(this);
   }
 }

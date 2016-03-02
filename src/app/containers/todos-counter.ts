@@ -1,8 +1,7 @@
-import { Component } from 'angular2/core';
+import { Component, Inject } from 'angular2/core';
 import { AddTodo } from '../components/add-todo';
 
 import { getRemainingTodosCount } from '../reducers/todos';
-import { connect } from '../lib';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,7 +19,7 @@ const mapStateToProps = (state) => {
   directives: [AddTodo]
 })
 export class TodosCounterContainer {
-  ngOnInit() {
+  constuctor(@Inject('connect') connect) {
     connect(mapStateToProps)(this);
   }
 }
