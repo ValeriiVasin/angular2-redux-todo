@@ -1,4 +1,9 @@
-import store from './store';
+import { createStore } from 'redux';
+import { rootReducer } from './reducers/root';
+
+const store = window.devToolsExtension ?
+  window.devToolsExtension()(createStore)(rootReducer) :
+  createStore(rootReducer);
 
 export const connect = (mapStateToProps = null, mapDispatchToProps = null) => {
   return component => {
