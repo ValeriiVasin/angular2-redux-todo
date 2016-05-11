@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 @Component({
-  selector: 'todo-list-container',
+  selector: 'todo-app',
   template: `
     <section id="todoapp">
       <app-header></app-header>
