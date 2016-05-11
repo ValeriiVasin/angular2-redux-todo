@@ -1,21 +1,20 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   entry: {
-    'app': path.resolve(__dirname, './src/bootstrap.ts'),
-    'vendor': path.resolve(__dirname, './src/vendor.ts')
+    app: [
+      'angular2/bundles/angular2-polyfills',
+      path.resolve(__dirname, './src/main.ts'),
+    ],
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
-  ],
+  plugins: [],
 
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', '.js'],
   },
 
   module: {
@@ -24,11 +23,11 @@ module.exports = {
     ],
     noParse: [
       /zone\.js\/dist\/.+/,
-      /angular2\/bundles\/.+/
-    ]
+      /angular2\/bundles\/.+/,
+    ],
   },
 
   devServer: {
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 };

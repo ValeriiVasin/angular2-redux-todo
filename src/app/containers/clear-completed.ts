@@ -11,7 +11,7 @@ const getCompletedTodosCount = (todos) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onButtonClicked: () => dispatch(clearCompletedTodos())
-  }
+  };
 };
 
 const mapStateToProps = (state) => {

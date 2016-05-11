@@ -6,14 +6,14 @@ import { setVisibilityFilter } from '../actions';
 const mapDispatchToProps = (dispatch, props) => {
   return {
     onLinkClick: () => dispatch(setVisibilityFilter({ filter: props.filter }))
-  }
+  };
 };
 
 const mapStateToProps = (state, props) => {
   return {
     text: props.filter.text,
     isActive: state.visibilityFilter === props.filter
-  }
+  };
 };
 
 @Component({

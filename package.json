@@ -6,6 +6,9 @@
     "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
     "postinstall": "typings install",
     "build": "gulp build:dev",
+    "lint": "npm run lint:js && npm run lint:ts",
+    "lint:js": "eslint .",
+    "lint:ts": "tslint 'src/**/*.ts' --exclude '**/*.d.ts'",
     "release-gh-pages": "./scripts/release-gh-pages"
   },
   "repository": {
@@ -25,11 +28,17 @@
   },
   "homepage": "https://github.com/valeriivasin/angular2-redux-todo",
   "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-preprocess": "^2.0.0",
     "gulp-util": "^3.0.7",
     "ts-loader": "^0.8.1",
+    "tslint": "^3.10.1",
     "typescript": "^1.7.3",
     "typings": "^0.6.8",
     "webpack": "^1.12.14",

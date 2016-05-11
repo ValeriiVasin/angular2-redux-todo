@@ -16,9 +16,9 @@ const updateTodo = (todos, id, changes) => {
   });
 };
 
-export const todos = (todos = [], action) => {
+export const todos = (state = [], action) => {
   if (action.type === 'CREATE_TODO') {
-      return [...todos, {
+      return [...state, {
         text: action.value,
         id: Date.now(),
         isDone: false
@@ -26,25 +26,25 @@ export const todos = (todos = [], action) => {
   }
 
   if (action.type === 'TOGGLE_TODO') {
-    return updateTodo(todos, action.id, (todo) => ({ isDone: !todo.isDone }));
+    return updateTodo(state, action.id, (todo) => ({ isDone: !todo.isDone }));
   }
 
   if (action.type === 'CLEAR_COMPLETED_TODOS') {
-    return todos.filter((todo) => !todo.isDone);
+    return state.filter((todo) => !todo.isDone);
   }
 
   if (action.type === 'DESTROY_TODO') {
-    return todos.filter((todo) => todo.id !== action.id);
+    return state.filter((todo) => todo.id !== action.id);
   }
 
   if (action.type === 'TOGGLE_ALL_TODOS') {
-    const isDone = getRemainingTodosCount(todos) !== 0;
-    return todos.map(todo => Object.assign({}, todo, { isDone }));
+    const isDone = getRemainingTodosCount(state) !== 0;
+    return state.map(todo => Object.assign({}, todo, { isDone }));
   }
 
   if (action.type === 'SAVE_TODO') {
-    return updateTodo(todos, action.id, { text: action.value });
+    return updateTodo(state, action.id, { text: action.value });
   }
 
-  return todos;
+  return state;
 };

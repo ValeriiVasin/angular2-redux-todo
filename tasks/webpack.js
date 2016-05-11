@@ -1,5 +1,4 @@
-/*eslint-env node*/
-'use strict';
+/* eslint-env node */
 
 // Webpack gulp task
 //
@@ -13,13 +12,12 @@
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const webpack = require('webpack');
-const path = require('path');
-const WebpackDevServer = require("webpack-dev-server");
+const WebpackDevServer = require('webpack-dev-server');
 
 const WEBPACK_CONFIG = require('../webpack.config.js');
 
 // PRODUCTION
-const webpackBuildProdTask = (callback) => {
+const webpackBuildProdTask = callback => {
   // modify some webpack config options
   const config = Object.assign({}, WEBPACK_CONFIG, {
     plugins: [
@@ -27,22 +25,22 @@ const webpackBuildProdTask = (callback) => {
       new webpack.DefinePlugin({
         'process.env': {
           // This has effect on the react lib size
-          'NODE_ENV': JSON.stringify('production')
-        }
+          NODE_ENV: JSON.stringify('production'),
+        },
       }),
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin()
-    ]
+      new webpack.optimize.UglifyJsPlugin(),
+    ],
   });
 
   // run webpack
-  webpack(config, function(err, stats) {
+  webpack(config, (err, stats) => {
     if (err) {
       throw new gutil.PluginError('webpack:build-prod', err);
     }
 
     gutil.log('[webpack:build-prod]', stats.toString({
-      colors: true
+      colors: true,
     }));
 
     callback();
@@ -50,17 +48,17 @@ const webpackBuildProdTask = (callback) => {
 };
 
 // DEVELOPMENT
-const webpackBuildDevTask = (() => {
+const webpackBuildDevTask = (function task() {
   // modify some webpack config options
   const devConfig = Object.assign({}, WEBPACK_CONFIG, {
     devtool: 'sourcemap',
-    debug: true
+    debug: true,
   });
 
   // create a single instance of the compiler to allow caching
   const devCompiler = webpack(devConfig);
 
-  return (callback) => {
+  return callback => {
     // run webpack
     devCompiler.run((err, stats) => {
       if (err) {
@@ -68,7 +66,7 @@ const webpackBuildDevTask = (() => {
       }
 
       gutil.log('[webpack:build-dev]', stats.toString({
-        colors: true
+        colors: true,
       }));
 
       callback();
@@ -76,45 +74,44 @@ const webpackBuildDevTask = (() => {
   };
 }());
 
-const webpackDevServerTask = (callback) => {
-	// modify some webpack config options
-	const config = Object.assign({}, WEBPACK_CONFIG, {
+const webpackDevServerTask = () => {
+  // modify some webpack config options
+  const config = Object.assign({}, WEBPACK_CONFIG, {
     devtool: 'eval',
     debug: false,
     plugins: [
       ...WEBPACK_CONFIG.plugins,
-      new webpack.HotModuleReplacementPlugin()
-    ]
+      new webpack.HotModuleReplacementPlugin(),
+    ],
   });
 
   // add special hot-reloading entries to all existed entry points
-  config.entry = Object.keys(config.entry).reduce((result, entry) => {
+  config.entry = Object.keys(config.entry).reduce((acc, entry) => {
     let entries = config.entry[entry];
 
     if (!Array.isArray(entries)) {
       entries = [entries];
     }
 
-    result[entry] = [
-      'webpack-dev-server/client?http://localhost:8080/',
-      'webpack/hot/dev-server',
-      ...entries
-    ];
-
-    return result;
+    return Object.assign({}, acc, {
+      [entry]: [
+        'webpack-dev-server/client?http://localhost:8080/',
+        'webpack/hot/dev-server',
+        ...entries,
+      ],
+    });
   }, {});
 
-	// Start a webpack-dev-server
-	new WebpackDevServer(webpack(config), {
+// Start a webpack-dev-server
+  new WebpackDevServer(webpack(config), {
     contentBase: 'src/',
     hot: true,
-		stats: {
-			colors: true
-		}
-	}).listen(8080, 'localhost', function(err) {
-		if (err) throw new gutil.PluginError('webpack-dev-server', err);
-		gutil.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
-	});
+    stats: {
+      colors: true,
+    },
+  }).listen(8080, 'localhost', err => {
+    throw new gutil.PluginError('webpack-dev-server', err);
+  });
 };
 
 gulp.task('webpack:build', webpackBuildProdTask);
