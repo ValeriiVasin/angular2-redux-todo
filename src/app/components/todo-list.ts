@@ -5,7 +5,7 @@ import { TodoContainer } from '../containers/todo';
   selector: 'todo-list',
   template: `
     <ul id="todo-list">
-      <todo-item-container *ngFor="#todo of todos" [todo]="todo"></todo-item-container>
+      <todo-item-container *ngFor="let todo of todos" [todo]="todo"></todo-item-container>
     </ul>
   `,
   directives: [TodoContainer]
