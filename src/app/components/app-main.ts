@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { TodoListContainer } from '../containers/todo-list';
 import { ToggleAllContainer } from '../containers/toggle-all';
 

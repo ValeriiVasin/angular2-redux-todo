@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { AddTodo } from '../components/add-todo';
 import { connect } from '../lib';
 import { createTodo } from '../actions';

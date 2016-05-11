@@ -1,4 +1,4 @@
-import { Component, Input } from 'angular2/core';
+import { Component, Input } from '@angular/core';
 import { Link } from '../components/link';
 import { connect } from '../lib';
 import { setVisibilityFilter } from '../actions';

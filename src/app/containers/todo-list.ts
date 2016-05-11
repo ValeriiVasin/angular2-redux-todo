@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { TodoList } from '../components/todo-list';
 import { FILTERS } from '../reducers/visibilityFilter';
 import { connect } from '../lib';

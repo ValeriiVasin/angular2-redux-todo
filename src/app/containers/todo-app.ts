@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { connect } from '../lib';
 import { AppHeader } from '../components/app-header';
 import { AppMain } from '../components/app-main';

@@ -1,4 +1,4 @@
-import { Component, Input } from 'angular2/core';
+import { Component, Input } from '@angular/core';
 import { Todo } from '../components/todo';
 import { connect } from '../lib';
 import {
