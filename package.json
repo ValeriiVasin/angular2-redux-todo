@@ -4,12 +4,13 @@
   "description": "Todo app using Angular2 and Redux",
   "scripts": {
     "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
-    "postinstall": "typings install",
+    "postinstall": "npm run typings",
     "build": "gulp build",
     "lint": "npm run lint:js && npm run lint:ts",
     "lint:js": "eslint .",
     "lint:ts": "tslint 'src/**/*.ts' --exclude '**/*.d.ts'",
-    "release-gh-pages": "./scripts/release-gh-pages"
+    "release-gh-pages": "./scripts/release-gh-pages",
+    "typings": "rm -rf typings; typings install;"
   },
   "repository": {
     "type": "git",
@@ -40,7 +41,7 @@
     "ts-loader": "^0.8.1",
     "tslint": "^3.10.1",
     "typescript": "^1.8.10",
-    "typings": "^0.6.8",
+    "typings": "^0.8.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.0"
   },
@@ -50,7 +51,6 @@
     "@angular/core": "^2.0.0-rc.1",
     "@angular/platform-browser": "^2.0.0-rc.1",
     "@angular/platform-browser-dynamic": "^2.0.0-rc.1",
-    "angular2": "2.0.0-beta.17",
     "es6-promise": "3.1.2",
     "es6-shim": "0.35.0",
     "redux": "^3.3.1",

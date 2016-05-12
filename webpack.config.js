@@ -3,7 +3,9 @@ const path = require('path');
 module.exports = {
   entry: {
     app: [
-      'angular2/bundles/angular2-polyfills',
+      'es6-shim',
+      'zone.js',
+      'reflect-metadata',
       path.resolve(__dirname, './src/main.ts'),
     ],
   },
