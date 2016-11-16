@@ -5,7 +5,7 @@ module.exports = {
     app: [
       'es6-shim',
       'zone.js',
-      'reflect-metadata',
+      'es7-reflect-metadata',
       path.resolve(__dirname, './src/main.ts'),
     ],
   },
@@ -25,7 +25,6 @@ module.exports = {
     ],
     noParse: [
       /zone\.js\/dist\/.+/,
-      /angular2\/bundles\/.+/,
     ],
   },
 

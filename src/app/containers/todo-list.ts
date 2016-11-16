@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoList } from '../components/todo-list';
+
 import { FILTERS } from '../reducers/visibilityFilter';
 import { connect } from '../lib';
 
@@ -30,7 +30,6 @@ const mapStateToProps = (state) => {
   template: `
     <todo-list [todos]="todos"></todo-list>
   `,
-  directives: [TodoList]
 })
 export class TodoListContainer {
   ngOnInit() {

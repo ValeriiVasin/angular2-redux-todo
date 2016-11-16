@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { connect } from '../lib';
-import { AppHeader } from '../components/app-header';
-import { AppMain } from '../components/app-main';
-import { AppFooter } from '../components/app-footer';
 
 const mapStateToProps = (state) => {
   return {
@@ -18,12 +15,7 @@ const mapStateToProps = (state) => {
       <app-main *ngIf="hasTodos"></app-main>
       <app-footer *ngIf="hasTodos"></app-footer>
     </section>
-  `,
-  directives: [
-    AppHeader,
-    AppMain,
-    AppFooter
-  ]
+  `
 })
 export class TodoApp {
   ngOnInit() {

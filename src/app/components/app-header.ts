@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AddTodoContainer } from '../containers/add-todo';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +8,6 @@ import { AddTodoContainer } from '../containers/add-todo';
       <add-todo-container></add-todo-container>
     </header>
   `,
-  directives: [
-    AddTodoContainer
-  ]
 })
 export class AppHeader {
 }

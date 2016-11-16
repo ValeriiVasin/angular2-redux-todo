@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AddTodo } from '../components/add-todo';
 
 import { getRemainingTodosCount } from '../reducers/todos';
 import { connect } from '../lib';
@@ -17,7 +16,6 @@ const mapStateToProps = (state) => {
       <strong>{{counter}}</strong> items left
     </span>
   `,
-  directives: [AddTodo]
 })
 export class TodosCounterContainer {
   ngOnInit() {

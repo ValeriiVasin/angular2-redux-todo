@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { FilterLink } from '../containers/filter-link';
 import { FILTERS } from '../reducers/visibilityFilter';
 
 @Component({
@@ -11,8 +10,7 @@ import { FILTERS } from '../reducers/visibilityFilter';
       <li><filter-link [filter]="FILTERS.TODO"></filter-link></li>
       <li><filter-link [filter]="FILTERS.DONE"></filter-link></li>
     </ul>
-  `,
-  directives: [FilterLink]
+  `
 })
 export class TodosFilters {
   public FILTERS = FILTERS;

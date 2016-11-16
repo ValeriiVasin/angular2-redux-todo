@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { TodosFilters } from './todos-filters';
-import { TodosCounterContainer } from '../containers/todos-counter';
-import { ClearCompletedContainer } from '../containers/clear-completed';
 
 @Component({
   selector: 'app-footer',
@@ -12,11 +9,6 @@ import { ClearCompletedContainer } from '../containers/clear-completed';
       <clear-completed></clear-completed>
     </footer>
   `,
-  directives: [
-    TodosCounterContainer,
-    TodosFilters,
-    ClearCompletedContainer
-  ]
 })
 export class AppFooter {
 }

@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodoContainer } from '../containers/todo';
 
 @Component({
   selector: 'todo-list',
@@ -7,8 +6,7 @@ import { TodoContainer } from '../containers/todo';
     <ul id="todo-list">
       <todo-item-container *ngFor="let todo of todos" [todo]="todo"></todo-item-container>
     </ul>
-  `,
-  directives: [TodoContainer]
+  `
 })
 export class TodoList {
   @Input() todos: Object[];

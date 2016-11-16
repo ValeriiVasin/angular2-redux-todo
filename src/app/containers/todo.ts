@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Todo } from '../components/todo';
 import { connect } from '../lib';
 import {
   toggleTodo,
@@ -41,7 +40,6 @@ const mapDispatchToProps = (dispatch, props) => {
       (save)="onSave($event)"
       ></todo-item>
   `,
-  directives: [Todo]
 })
 export class TodoContainer {
   @Input() todo;

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Link } from '../components/link';
+
 import { connect } from '../lib';
 import { setVisibilityFilter } from '../actions';
 
@@ -25,7 +25,6 @@ const mapStateToProps = (state, props) => {
       (click)="onLinkClick()"
       ></my-link>
   `,
-  directives: [Link]
 })
 export class FilterLink {
   @Input() filter;

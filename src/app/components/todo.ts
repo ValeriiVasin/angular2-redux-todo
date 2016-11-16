@@ -24,7 +24,6 @@ import { Focus } from '../directives/focus';
         />
     </li>
   `,
-  directives: [Focus]
 })
 export class Todo {
   @Input() text: string;
